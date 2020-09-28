@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,13 +12,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Test1 {
 
-    public static WebDriver driver;
+    private WebDriver driver;
     public static Search search;
     public static WebDriverWait wait;
 
     @Before
     public void Begin() {
-        System.setProperty("webdriver.chrome.driver", "/Users/juli/Desktop/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
         search = new Search(driver);
@@ -61,10 +62,16 @@ public class Test1 {
         driver.findElement(By.id("header-search")).sendKeys(namePc);
         driver.findElement(By.xpath("//button[@class='_1XiEJDPVpk']")).click();
 
+
         String newNamePc = search.name();
-        if (namePc != newNamePc) {
+        if (!(namePc.equals(newNamePc))) {
             System.out.println("Wrong name or value");
         }
     }
+
+//    @After
+//    public void finish() {
+//        driver.quit();
+//    }
 }
 

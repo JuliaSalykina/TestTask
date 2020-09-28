@@ -17,7 +17,10 @@ public class Search {
         @FindBy(css = "[for='7893318_152981']")
         private WebElement Pc2;
 
-        @FindBy(css = "[data-tid='ce80a508']")
+//        @FindBy(css = "[data-tid='ce80a508']")
+//        private WebElement valuePc;
+
+        @FindBy(xpath = "//a[@class = '_27nuSZ19h7 wwZc93J2Ao cia-cs']")
         private WebElement valuePc;
 
         public void choose () {
